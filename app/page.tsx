@@ -6,10 +6,9 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import {
-  Users, Target, Award, MapPin, Calendar, Building,
-  Lightbulb, Heart, Zap, Globe, Star, TrendingUp,
-  Code2, Palette, Cloud, ArrowRight, CheckCircle,
-  Phone, Mail, Linkedin, Twitter, BookOpen, Trophy,
+  Users, Award, Calendar,
+  Lightbulb, Heart, Star,
+  ArrowRight, CheckCircle,
   CreditCard, Info, Shield, XCircle
 } from 'lucide-react'
 
