@@ -38,7 +38,7 @@ const navigation = [
     { name: 'Contact', href: '/contact' },
 ]
 
-export default function Header() {
+export default function Header({ user }: { user?: any }) {
     const [scrolled, setScrolled] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
     const pathname = usePathname()
@@ -122,12 +122,65 @@ export default function Header() {
 
                     <div className="flex items-center space-x-4">
                         <ModeToggle />
-                        <Button
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                            asChild
-                        >
-                            <Link href="/contact">Get Quote</Link>
-                        </Button>
+                        {user ? (
+                            <div className="relative group">
+                                <button className="flex items-center space-x-2 focus:outline-none">
+                                    <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 border overflow-hidden">
+                                        {user.avatar_url ? (
+                                            <Image 
+                                                src={user.avatar_url} 
+                                                alt={user.name} 
+                                                width={40} 
+                                                height={40} 
+                                                className="object-cover"
+                                            /> 
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-slate-500 font-bold">
+                                                {user.name.charAt(0)}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <ChevronDown className="w-4 h-4 text-slate-500" />
+                                </button>
+                                {/* Dropdown Menu */}
+                                <div className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 py-2 animate-fade-down hidden group-hover:block">
+                                    <div className="px-4 py-2 border-b border-slate-100 dark:border-slate-800 mb-2">
+                                        <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
+                                        <p className="text-xs text-slate-500 capitalize">{user.role}</p>
+                                    </div>
+                                    <Link 
+                                        href={user.role === 'client' ? '/dashboard/client' : '/dashboard/developer'} 
+                                        className="flex items-center px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600"
+                                    >
+                                        <code className="material-symbols-outlined text-lg mr-2">dashboard</code>
+                                        Dashboard
+                                    </Link>
+                                    <form action="/auth/logout" onSubmit={async (e) => {
+                                        e.preventDefault();
+                                        // Dynamic import to avoid server action in client component issues if not handled
+                                        const { logout } = await import('@/app/actions');
+                                        await logout();
+                                    }}>
+                                        <button className="w-full flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 text-left">
+                                            <code className="material-symbols-outlined text-lg mr-2">logout</code>
+                                            Sign Out
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="flex items-center gap-4">
+                                <Link href="/login" className="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-blue-600">
+                                    Log In
+                                </Link>
+                                <Button
+                                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                                    asChild
+                                >
+                                    <Link href="/contact">Get Quote</Link>
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </nav>
 

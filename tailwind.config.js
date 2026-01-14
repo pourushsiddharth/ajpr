@@ -38,10 +38,18 @@ module.exports = {
                     DEFAULT: "hsl(var(--accent))",
                     foreground: "hsl(var(--accent-foreground))",
                 },
+                "accent-start": "#3b82f6",
+                "accent-end": "#a855f7",
+                "status-green": "#22c55e",
+                "background-light": "#f8fafc",
+                "background-dark": "#0f172a",
                 card: {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
+            },
+            fontFamily: {
+                "display": ["var(--font-manrope)", "sans-serif"],
             },
             animation: {
                 "fade-up": "fadeUp 0.6s ease-out forwards",

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/Header'
@@ -7,7 +7,8 @@ import Footer from '@/components/Footer'
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 
 export const metadata: Metadata = {
   title: 'AJPR World – Your Partner for Legal, Tech & Business Growth',
@@ -39,21 +40,26 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+import { getSession } from '@/lib/auth';
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await getSession();
+  const user = session?.user;
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${manrope.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <Header user={user} />
           <main className="min-h-screen">
             {children}
             <Analytics />
