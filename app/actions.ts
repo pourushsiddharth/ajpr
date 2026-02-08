@@ -88,6 +88,7 @@ export async function logHoursAction(projectId: number, hours: number) {
         return { success: false };
     }
 }
+<<<<<<< HEAD
 import { createClientRequest } from "@/lib/db/queries";
 
 export async function submitOrderRequest(data: any) {
@@ -148,3 +149,5 @@ export async function createRazorpayOrder(amount: number) {
         throw new Error("Failed to create Razorpay order");
     }
 }
+=======
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9

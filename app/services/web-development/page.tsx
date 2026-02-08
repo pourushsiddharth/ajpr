@@ -5,8 +5,11 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { CheckCircle, ArrowRight, Globe, Users, Award, Target, Sparkles, Clock } from 'lucide-react'
+<<<<<<< HEAD
 import PricingSection from '@/components/PricingSection'
 
+=======
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
 
 export default function WebDevelopmentPage() {
     return (
@@ -55,9 +58,12 @@ export default function WebDevelopmentPage() {
                 </div>
             </section>
 
+<<<<<<< HEAD
             {/* Pricing Section */}
             <PricingSection />
 
+=======
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
             {/* Success Stories */}
             <section className="py-24 bg-white dark:bg-slate-900 px-4">
                 <h2 className="text-4xl font-bold text-center mb-6">Software Engineering Success Stories</h2>

@@ -17,6 +17,7 @@ const serviceData = [
         title: 'Custom Web Development',
         description: 'Build modern, responsive web apps with Next.js, React, and TypeScript.',
         features: ['Next.js 14', 'TypeScript', 'SEO Optimization', 'PWA'],
+<<<<<<< HEAD
         color: 'text-blue-600',
         bg: 'bg-blue-50',
         price: 'Custom Quote',
@@ -41,6 +42,65 @@ const serviceData = [
         bg: 'bg-blue-50',
         price: 'Custom Quote',
         delivery: 'Monthly Retainer',
+=======
+        gradient: 'from-blue-500 to-cyan-500',
+        price: '₹25,000+',
+        delivery: '2-4 weeks',
+    },
+    {
+        icon: Scale,
+        title: 'Legal & Court Services',
+        description: 'Expert handling of criminal, civil, labour, and SARFAESI cases.',
+        features: ['Litigation', 'Documentation', 'Consultation', 'Compliance'],
+        gradient: 'from-purple-500 to-pink-500',
+        price: '₹10,000+',
+        delivery: '1-2 weeks',
+    },
+    {
+        icon: Calculator,
+        title: 'Tax & Financial Services',
+        description: 'GST, Income Tax, TDS/TCS returns, audit, and financial planning.',
+        features: ['GST Returns', 'ITR Filing', 'TDS Returns', 'Form 15CA'],
+        gradient: 'from-green-500 to-emerald-500',
+        price: '₹5,000+',
+        delivery: '1 week',
+    },
+    // {
+    //     icon: Users,
+    //     title: 'HR & Payroll Management',
+    //     description: 'Complete payroll, ESI/PF compliance, HR policies, and more.',
+    //     features: ['Payroll Setup', 'ECR Returns', 'Employee Documents', 'Compliance'],
+    //     gradient: 'from-orange-500 to-red-500',
+    //     price: '₹8,000+',
+    //     delivery: '1-2 weeks',
+    // },
+    {
+        icon: Briefcase,
+        title: 'Company Registration',
+        description: 'Company, LLP, GST, TAN, PAN, MSME, and legal entity setup.',
+        features: ['Company ROC', 'GST & TAN', 'MSME Registration', 'DSC'],
+        gradient: 'from-indigo-500 to-purple-500',
+        price: '₹7,000+',
+        delivery: '3-5 days',
+    },
+    {
+        icon: FileText,
+        title: 'Documentation Services',
+        description: 'Agreements, MoA/AoA, deed drafting, NOCs, and notary.',
+        features: ['Agreements', 'MoA/AoA', 'Sale & Transfer Deeds', 'Notary'],
+        gradient: 'from-teal-500 to-green-500',
+        price: '₹2,000+',
+        delivery: '2-3 days',
+    },
+    {
+        icon: Shield,
+        title: 'Aviation Security (BCAS)',
+        description: 'AEP, E-Sahaj, security program clearance, and compliance.',
+        features: ['AEP', 'E-Sahaj', 'Security Docs', 'Renewals'],
+        gradient: 'from-rose-500 to-pink-500',
+        price: '₹15,000+',
+        delivery: '1-2 weeks',
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
     }
 ]
 
@@ -57,7 +117,11 @@ export default function ServicesPage() {
     }, [])
 
     return (
+<<<<<<< HEAD
         <section ref={sectionRef} className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+=======
+        <section ref={sectionRef} className="py-24 bg-slate-50 dark:bg-slate-900/50">
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
             <div className="container mx-auto px-4">
                 <div className={`text-center mb-16 transition-opacity ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                     <h2 className="text-4xl font-bold">Our Services</h2>
@@ -67,9 +131,15 @@ export default function ServicesPage() {
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {serviceData.map((s, i) => (
+<<<<<<< HEAD
                         <Card key={i} className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 dark:bg-slate-900 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: `${i * 0.1}s` }}>
                             <CardHeader className="p-6 flex items-center">
                                 <div className={`p-4 rounded-full ${s.bg} dark:bg-blue-900/30 ${s.color} dark:text-blue-400 mr-4`}>
+=======
+                        <Card key={i} className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: `${i * 0.1}s` }}>
+                            <CardHeader className="p-6 flex items-center">
+                                <div className={`p-4 rounded-full bg-gradient-to-r ${s.gradient} text-white mr-4`}>
+>>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                     {React.createElement(s.icon, { className: 'h-6 w-6' })}
                                 </div>
                                 <CardTitle className="text-xl font-semibold">{s.title}</CardTitle>

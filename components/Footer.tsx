@@ -144,7 +144,6 @@ export default function Footer() {
                             <span className="sr-only">YouTube</span>
                         </Link>
                     </div>
-
                 </div>
             </div>
         </footer>
