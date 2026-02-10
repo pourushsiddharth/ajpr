@@ -16,18 +16,12 @@ import {
 } from '@/components/ui/accordion'
 import {
     Menu, ChevronDown, Code2, Scale, Calculator,
-<<<<<<< HEAD
     Phone, Building, ShoppingCart
 } from 'lucide-react'
 import { ModeToggle } from '@/components/mode-toggle'
 import { useTheme } from 'next-themes'
 import { useCart } from '@/components/providers/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
-=======
-    Phone, Building
-} from 'lucide-react'
-import { ModeToggle } from '@/components/mode-toggle'
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
 
 const navigation = [
     { name: 'Home', href: '/' },
@@ -36,13 +30,11 @@ const navigation = [
         href: '/services',
         dropdown: [
             { name: 'Web Development', href: '/services/web-development', icon: Code2 },
-<<<<<<< HEAD
-            { name: 'Cloud Solutions', href: '/services/cloud-solutions', icon: Calculator }, // Using Calculator as placeholder or need to import Zap
-=======
+            { name: 'Web Development', href: '/services/web-development', icon: Code2 },
             { name: 'Legal Services', href: '/services/legal', icon: Scale },
             { name: 'Financial Services', href: '/services/financial', icon: Calculator },
             { name: 'Business Registration', href: '/services/business', icon: Building },
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
+            { name: 'Cloud Solutions', href: '/services/cloud-solutions', icon: Calculator },
             { name: 'Digital Marketing', href: '/services/digital-marketing', icon: Phone },
         ]
     },
@@ -54,7 +46,6 @@ const navigation = [
 export default function Header({ user }: { user?: any }) {
     const [scrolled, setScrolled] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-<<<<<<< HEAD
     const [mounted, setMounted] = useState(false)
     const pathname = usePathname()
     const { resolvedTheme } = useTheme()
@@ -62,11 +53,6 @@ export default function Header({ user }: { user?: any }) {
 
     useEffect(() => {
         setMounted(true)
-=======
-    const pathname = usePathname()
-
-    useEffect(() => {
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
         const handleScroll = () => {
             setScrolled(window.scrollY > 50)
         }
@@ -79,7 +65,7 @@ export default function Header({ user }: { user?: any }) {
         return pathname === href || pathname.startsWith(href + '/')
     }
 
-<<<<<<< HEAD
+
     const logoSrc = mounted && resolvedTheme === 'dark' 
         ? "/logo/ajpr-logo-white.png" 
         : "/logo/ajpr-logo.png"
@@ -90,33 +76,18 @@ export default function Header({ user }: { user?: any }) {
                 ? 'bg-background/95 backdrop-blur-lg shadow-lg'
                 : 'bg-background/80 backdrop-blur-sm'
                 } border-b border-border/50`}
-=======
-    return (
-        <header
-            className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
-                ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-lg shadow-lg'
-                : 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm'
-                } border-b border-gray-200/50 dark:border-gray-800/50`}
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
         >
             <div className="container flex h-20 items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-3 group">
                     <div className="relative w-32 h-12 group-hover:scale-105 transition-transform duration-300">
                         <Image
-<<<<<<< HEAD
                             src={logoSrc}
-=======
-                            src="/logo/ajpr-logo.png"
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                             alt="AJPR World Logo"
                             fill
                             className="object-contain"
                             priority
-<<<<<<< HEAD
                             key={logoSrc} // Force re-render on src change
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                         />
                     </div>
                 </Link>
@@ -133,13 +104,8 @@ export default function Header({ user }: { user?: any }) {
                             <Link
                                 href={item.href}
                                 className={`flex items-center font-medium py-2 transition-colors ${isActive(item.href)
-<<<<<<< HEAD
                                     ? 'text-primary'
                                     : 'text-muted-foreground hover:text-primary'
-=======
-                                    ? 'text-blue-600 dark:text-blue-400'
-                                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                     }`}
                             >
                                 {item.name}
@@ -171,7 +137,6 @@ export default function Header({ user }: { user?: any }) {
 
                     <div className="flex items-center space-x-4">
                         <ModeToggle />
-<<<<<<< HEAD
                         
                         <Button 
                             variant="ghost" 
@@ -186,9 +151,6 @@ export default function Header({ user }: { user?: any }) {
                                 </span>
                             )}
                         </Button>
-
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                         {user ? (
                             <div className="relative group">
                                 <button className="flex items-center space-x-2 focus:outline-none">
@@ -216,11 +178,7 @@ export default function Header({ user }: { user?: any }) {
                                         <p className="text-xs text-slate-500 capitalize">{user.role}</p>
                                     </div>
                                     <Link 
-<<<<<<< HEAD
                                         href={user.role === 'admin' ? '/dashboard/admin' : user.role === 'client' ? '/dashboard/client' : '/dashboard/developer'} 
-=======
-                                        href={user.role === 'client' ? '/dashboard/client' : '/dashboard/developer'} 
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                         className="flex items-center px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600"
                                     >
                                         <code className="material-symbols-outlined text-lg mr-2">dashboard</code>
@@ -258,7 +216,6 @@ export default function Header({ user }: { user?: any }) {
                 {/* Mobile Navigation */}
                 <div className="lg:hidden flex items-center space-x-2">
                     <ModeToggle />
-<<<<<<< HEAD
                     
                     <Button 
                         variant="ghost" 
@@ -267,15 +224,12 @@ export default function Header({ user }: { user?: any }) {
                         onClick={() => setIsCartOpen(true)}
                     >
                         <ShoppingCart className="h-5 w-5" />
-                         {cart.length > 0 && (
+                            {cart.length > 0 && (
                             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                                 {cart.length}
                             </span>
                         )}
                     </Button>
-
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button variant="outline" size="icon">
@@ -286,19 +240,12 @@ export default function Header({ user }: { user?: any }) {
                             <SheetHeader>
                                 <SheetTitle className="flex items-center space-x-2">
                                     <Image
-<<<<<<< HEAD
                                         src={logoSrc}
-=======
-                                        src="/logo/ajpr-logo.png"
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                         alt="AJPR World"
                                         width={120}
                                         height={40}
                                         className="object-contain"
-<<<<<<< HEAD
                                         key={logoSrc + "-mobile"}
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                     />
                                 </SheetTitle>
                             </SheetHeader>
@@ -352,6 +299,58 @@ export default function Header({ user }: { user?: any }) {
                                         </Link>
                                     )
                                 )}
+                                
+                                <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                                    {user ? (
+                                        <>
+                                            <div className="flex items-center space-x-3 px-2 py-2">
+                                                <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 border overflow-hidden">
+                                                    {user.avatar_url ? (
+                                                        <Image 
+                                                            src={user.avatar_url} 
+                                                            alt={user.name} 
+                                                            width={40} 
+                                                            height={40} 
+                                                            className="object-cover"
+                                                        /> 
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center text-slate-500 font-bold text-lg">
+                                                            {user.name.charAt(0)}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm font-bold text-slate-900 dark:text-white truncate max-w-[150px]">{user.name}</p>
+                                                    <p className="text-xs text-slate-500 capitalize">{user.role}</p>
+                                                </div>
+                                            </div>
+
+                                            <Link
+                                                href={user.role === 'admin' ? '/dashboard/admin' : user.role === 'client' ? '/dashboard/client' : '/dashboard/developer'}
+                                                className="flex items-center text-lg font-medium transition-colors hover:text-blue-600"
+                                            >
+                                                Dashboard
+                                            </Link>
+                                            
+                                            <form action="/auth/logout" onSubmit={async (e) => {
+                                                e.preventDefault();
+                                                const { logout } = await import('@/app/actions');
+                                                await logout();
+                                            }}>
+                                                <button className="w-full flex items-center text-lg font-medium text-red-600 hover:text-red-700 text-left">
+                                                    Sign Out
+                                                </button>
+                                            </form>
+                                        </>
+                                    ) : (
+                                        <Link
+                                            href="/login"
+                                            className="flex items-center text-lg font-medium transition-colors hover:text-blue-600"
+                                        >
+                                            Log In
+                                        </Link>
+                                    )}
+                                </div>
 
                                 {/* CTA Button */}
                                 <Button className="mt-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all" asChild>
@@ -362,10 +361,7 @@ export default function Header({ user }: { user?: any }) {
                     </Sheet>
                 </div>
             </div>
-<<<<<<< HEAD
             <CartDrawer />
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
         </header>
     )
 }

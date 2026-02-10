@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const secretKey = process.env.JWT_SECRET;
 if (!secretKey) {
-  throw new Error('JWT_SECRET is not defined in environment variables');
+    throw new Error('JWT_SECRET is not defined in environment variables');
 }
 const key = new TextEncoder().encode(secretKey);
 
@@ -17,10 +17,14 @@ export async function encrypt(payload: any) {
 }
 
 export async function decrypt(input: string): Promise<any> {
-    const { payload } = await jwtVerify(input, key, {
-        algorithms: ['HS256'],
-    });
-    return payload;
+    try {
+        const { payload } = await jwtVerify(input, key, {
+            algorithms: ['HS256'],
+        });
+        return payload;
+    } catch {
+        return null;
+    }
 }
 
 export async function getSession() {

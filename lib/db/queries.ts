@@ -82,7 +82,6 @@ export async function updateProjectHours(projectId: number, hoursToAdd: number) 
   `;
   return { success: true };
 }
-<<<<<<< HEAD
 // --- Admin / Client Requests ---
 
 export async function createClientRequest(data: any) {
@@ -134,5 +133,3 @@ export async function assignDeveloper(clientId: number, developerId: number) {
     `;
   return { success: true };
 }
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9

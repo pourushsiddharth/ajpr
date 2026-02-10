@@ -16,8 +16,12 @@ interface CartContextType {
   cart: CartItem[]
   addToCart: (item: Omit<CartItem, 'id'>) => void
   removeFromCart: (id: string) => void
+  updateQuantity: (id: string, quantity: number) => void
   clearCart: () => void
   cartTotal: number
+  packageTotal: number
+  addonTotal: number
+  payableTotal: number
   isCartOpen: boolean
   setIsCartOpen: (isOpen: boolean) => void
 }
@@ -46,6 +50,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }, [cart])
 
   const addToCart = (item: Omit<CartItem, 'id'>) => {
+    // Check if package already exists, only one package allowed
+    if (item.type === 'package' && cart.some(i => i.type === 'package')) {
+      return
+    }
+
     const newItem = { ...item, id: uuidv4() }
     setCart((prev) => [...prev, newItem])
     setIsCartOpen(true) // Open cart when item added
@@ -55,19 +64,41 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart((prev) => prev.filter((item) => item.id !== id))
   }
 
+  const updateQuantity = (id: string, quantity: number) => {
+    if (quantity < 1) return
+    setCart((prev) => prev.map((item) => 
+      item.id === id ? { ...item, quantity } : item
+    ))
+  }
+
   const clearCart = () => {
     setCart([])
   }
 
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+  
+  const packageTotal = cart
+    .filter(item => item.type === 'package')
+    .reduce((total, item) => total + (item.price * item.quantity), 0)
+
+  const addonTotal = cart
+    .filter(item => item.type === 'addon')
+    .reduce((total, item) => total + (item.price * item.quantity), 0)
+
+  // 50% of package + 100% of addons
+  const payableTotal = (packageTotal * 0.5) + addonTotal
 
   return (
     <CartContext.Provider value={{
       cart,
       addToCart,
       removeFromCart,
+      updateQuantity,
       clearCart,
       cartTotal,
+      packageTotal,
+      addonTotal,
+      payableTotal,
       isCartOpen,
       setIsCartOpen
     }}>

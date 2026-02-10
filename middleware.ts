@@ -22,28 +22,16 @@ export async function middleware(request: NextRequest) {
 
             // Strict Role-Based Access Control
             if (request.nextUrl.pathname.startsWith('/dashboard/client') && role !== 'client') {
-<<<<<<< HEAD
-=======
-                // Developer trying to access Client -> Redirect to their own dashboard
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                 return NextResponse.redirect(new URL('/dashboard/developer', request.url));
             }
 
             if (request.nextUrl.pathname.startsWith('/dashboard/developer') && role !== 'developer') {
-<<<<<<< HEAD
                 return NextResponse.redirect(new URL('/dashboard/client', request.url));
             }
 
             if (request.nextUrl.pathname.startsWith('/dashboard/admin') && role !== 'admin') {
                 return NextResponse.redirect(new URL('/login', request.url));
             }
-
-=======
-                // Client trying to access Developer -> Redirect to their own dashboard
-                return NextResponse.redirect(new URL('/dashboard/client', request.url));
-            }
-
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
         } catch (e) {
             // Invalid token -> Login
             return NextResponse.redirect(new URL('/login', request.url));

@@ -17,10 +17,8 @@ const serviceData = [
         title: 'Custom Web Development',
         description: 'Build modern, responsive web apps with Next.js, React, and TypeScript.',
         features: ['Next.js 14', 'TypeScript', 'SEO Optimization', 'PWA'],
-<<<<<<< HEAD
-        color: 'text-blue-600',
-        bg: 'bg-blue-50',
-        price: 'Custom Quote',
+        gradient: 'from-blue-500 to-cyan-500',
+        price: '₹25,000+',
         delivery: '2-4 weeks',
     },
     {
@@ -28,8 +26,7 @@ const serviceData = [
         title: 'Cloud Solutions',
         description: 'Scalable cloud infrastructure, deployment automation, and server management.',
         features: ['AWS / Azure / GCP', 'CI/CD Pipelines', 'Docker & Kubernetes', 'Serverless Arch'],
-        color: 'text-blue-600',
-        bg: 'bg-blue-50',
+        gradient: 'from-blue-500 to-cyan-500',
         price: 'Custom Quote',
         delivery: 'Project Based',
     },
@@ -38,14 +35,9 @@ const serviceData = [
         title: 'Digital Marketing',
         description: 'Data-driven strategies to grow your online presence and reach your target audience.',
         features: ['SEO & SEM', 'Social Media Marketing', 'Content Strategy', 'Analytics & Reporting'],
-        color: 'text-blue-600',
-        bg: 'bg-blue-50',
+        gradient: 'from-blue-400 to-indigo-500',
         price: 'Custom Quote',
         delivery: 'Monthly Retainer',
-=======
-        gradient: 'from-blue-500 to-cyan-500',
-        price: '₹25,000+',
-        delivery: '2-4 weeks',
     },
     {
         icon: Scale,
@@ -100,7 +92,6 @@ const serviceData = [
         gradient: 'from-rose-500 to-pink-500',
         price: '₹15,000+',
         delivery: '1-2 weeks',
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
     }
 ]
 
@@ -117,11 +108,7 @@ export default function ServicesPage() {
     }, [])
 
     return (
-<<<<<<< HEAD
         <section ref={sectionRef} className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-=======
-        <section ref={sectionRef} className="py-24 bg-slate-50 dark:bg-slate-900/50">
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
             <div className="container mx-auto px-4">
                 <div className={`text-center mb-16 transition-opacity ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                     <h2 className="text-4xl font-bold">Our Services</h2>
@@ -131,15 +118,9 @@ export default function ServicesPage() {
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {serviceData.map((s, i) => (
-<<<<<<< HEAD
                         <Card key={i} className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 dark:bg-slate-900 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: `${i * 0.1}s` }}>
                             <CardHeader className="p-6 flex items-center">
-                                <div className={`p-4 rounded-full ${s.bg} dark:bg-blue-900/30 ${s.color} dark:text-blue-400 mr-4`}>
-=======
-                        <Card key={i} className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: `${i * 0.1}s` }}>
-                            <CardHeader className="p-6 flex items-center">
                                 <div className={`p-4 rounded-full bg-gradient-to-r ${s.gradient} text-white mr-4`}>
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
                                     {React.createElement(s.icon, { className: 'h-6 w-6' })}
                                 </div>
                                 <CardTitle className="text-xl font-semibold">{s.title}</CardTitle>

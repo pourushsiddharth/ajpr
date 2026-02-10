@@ -42,12 +42,9 @@ export const metadata: Metadata = {
 
 import { getSession } from '@/lib/auth';
 
-<<<<<<< HEAD
 import { AuthProvider } from '@/components/providers/AuthProvider'
 import { CartProvider } from '@/components/providers/CartProvider'
 
-=======
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
 export default async function RootLayout({
   children,
 }: {
@@ -65,7 +62,6 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-<<<<<<< HEAD
           <AuthProvider user={user}>
             <CartProvider>
               <Header user={user} />
@@ -77,15 +73,6 @@ export default async function RootLayout({
               <Footer />
             </CartProvider>
           </AuthProvider>
-=======
-          <Header user={user} />
-          <main className="min-h-screen">
-            {children}
-            <Analytics />
-            <SpeedInsights />
-          </main>
-          <Footer />
->>>>>>> 227b151cdbe31222c74e48faf9f6cae6d72f64d9
         </ThemeProvider>
       </body>
     </html>
